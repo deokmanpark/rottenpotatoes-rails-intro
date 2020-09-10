@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
     @selected = session[:ratings]
     session[:sortby] = params[:sortby] if params.has_key?(:sortby)
     if session.has_key?(:sortby)
-      @movies = Movie.order(session[:sortby]), where(:rating => @selected)
+      @movies = Movie.order(session[:sortby]).where(:rating => @selected)
     else
       @movies = Movie.where(:rating => @selected)
     end
